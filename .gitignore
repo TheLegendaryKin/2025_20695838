@@ -1,0 +1,12 @@
+# Ignore Windows junk
+Thumbs.db
+desktop.ini
+
+# Ignore executables
+*.exe
+*.dll
+*.obj
+
+# Ignore build folders
+bin/
+obj/
