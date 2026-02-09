@@ -12,3 +12,6 @@ desktop.ini
 # Ignore build folders
 bin/
 obj/
+
+# Ignore addtional CMake relevant
+Worksheet4/**/build/
