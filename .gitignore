@@ -6,6 +6,7 @@ desktop.ini
 *.exe
 *.dll
 *.obj
+*.lib
 
 # Ignore build folders
 bin/
