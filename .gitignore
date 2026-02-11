@@ -19,3 +19,8 @@ Worksheet4/**/build/
 # Ignore Doxygen builds
 Worksheet5/html/
 Worksheet5/latex/
+
+# Worksheet 5 generated outputs
+Worksheet5/build/
+Worksheet5/html/
+Worksheet5/latex/
