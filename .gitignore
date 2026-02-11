@@ -27,3 +27,13 @@ Worksheet5/latex/
 
 # Ignore build artefacts entirely
 **/build/
+
+# Qt Creator / Qt
+**/.qtcreator/
+**/*.user
+**/*.user.*
+**/*.qtc
+**/*.qtc.*
+**/.qtc/
+**/.qtc_clangd/
+**/.qt/
