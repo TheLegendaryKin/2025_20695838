@@ -37,3 +37,12 @@ Worksheet5/latex/
 **/.qtc/
 **/.qtc_clangd/
 **/.qt/
+
+# Increase ignores to prevent useless mixup
+**/build*/
+**/build/**
+**/Release/**
+**/Debug/**
+Worksheet4/releases/
+
+
