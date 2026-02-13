@@ -80,21 +80,6 @@ void MainWindow::on_actionOpen_File_triggered() {
         tr("STL Files (*.stl);; Text Files (*.txt)")
         );
 
-    if (!fileName.isEmpty()) {
-        // Get the selected item [cite: 490]
-        QModelIndex index = ui->treeView->currentIndex();
-        if (index.isValid()) {
-            ModelPart *selectedPart = static_cast<ModelPart*>(index.internalPointer()); // [cite: 491, 492]
-
-            // Extract just the filename (e.g., "part.stl") from the full path
-            QFileInfo fileInfo(fileName);
-            selectedPart->set(0, fileInfo.fileName());
-
-            // Refresh the tree display
-            emit partList->dataChanged(index, index);
-            emit statusUpdateMessage(QString("Updated item to: ") + fileInfo.fileName(), 0); // [cite: 854]
-        }
-    }
 
     if (!fileName.isEmpty()) {
         QModelIndex index = ui->treeView->currentIndex();
@@ -108,6 +93,8 @@ void MainWindow::on_actionOpen_File_triggered() {
             // Refresh the tree view
             emit partList->dataChanged(index, index);
             emit statusUpdateMessage(QString("Updated item name to: ") + fileInfo.fileName(), 0);
+        } else {
+            emit statusUpdateMessage(QString("Error: No item selected in tree"), 0);
         }
     }
 }
