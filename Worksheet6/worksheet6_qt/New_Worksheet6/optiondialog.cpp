@@ -51,3 +51,15 @@ int OptionDialog::getR() const { return ui->rSlider->value(); }
 int OptionDialog::getG() const { return ui->gSlider->value(); }
 int OptionDialog::getB() const { return ui->bSlider->value(); }
 bool OptionDialog::getIsVisible() const { return ui->isVisibleCheckBox->isChecked(); }
+
+void OptionDialog::updateFromPart(ModelPart* part) {
+    // Uses the widget names you defined in the UI Designer
+    ui->nameLineEdit->setText(part->data(0).toString());
+        ui->isVisibleCheckBox->setChecked(part->visible());
+}
+
+void OptionDialog::updatePart(ModelPart* part) {
+    // Updates the ModelPart data based on the user's input in the dialog
+    part->set(0, ui->nameLineEdit->text());
+        part->setVisible(ui->isVisibleCheckBox->isChecked());
+}

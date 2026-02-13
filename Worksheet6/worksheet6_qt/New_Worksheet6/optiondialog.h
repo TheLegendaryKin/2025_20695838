@@ -3,6 +3,10 @@
 
 #include <QDialog>
 #include "ModelPartList.h"
+// Add to optiondialog.h
+#include "ModelPart.h"
+
+
 
 namespace Ui {
 class OptionDialog;
@@ -22,7 +26,8 @@ public:
     int getG() const;
     int getB() const;
     bool getIsVisible() const;
-
+    void updateFromPart(ModelPart* part);
+    void updatePart(ModelPart* part);
 
 
 private:
