@@ -133,6 +133,7 @@ private:
     QList<QVariant>                             m_itemData;         /**< List (array of column data for item */
     ModelPart*                                  m_parentItem;       /**< Pointer to parent */
 
+
     /* These are some typical properties that I think the part will need, you might
      * want to add you own.
      */
@@ -145,7 +146,11 @@ private:
     //vtkSmartPointer<vtkMapper>                  mapper;             /**< Mapper for rendering */
     //vtkSmartPointer<vtkActor>                   actor;              /**< Actor for rendering */
     //vtkColor3<unsigned char>                    colour;             /**< User defineable colour */
-};  
+
+
+    unsigned char colourR, colourG, colourB; // [cite: 830]
+};
+
 
 
 #endif

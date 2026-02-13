@@ -97,22 +97,25 @@ int ModelPart::row() const {
 
 void ModelPart::setColour(const unsigned char R, const unsigned char G, const unsigned char B) {
     /* This is a placeholder function that you will need to modify if you want to use it */
-    
+    colourR = R;
+    colourG = G;
+    colourB = B;
     /* As the name suggests ... */
 }
+
 
 unsigned char ModelPart::getColourR() {
     /* This is a placeholder function that you will need to modify if you want to use it */
     
     /* As the name suggests ... */
-    return 0;   // needs updating
+    return colourR;   // needs updating
 }
 
 unsigned char ModelPart::getColourG() {
     /* This is a placeholder function that you will need to modify if you want to use it */
     
     /* As the name suggests ... */
-    return 0;   // needs updating
+    return colourG;   // needs updating
 }
 
 
@@ -120,19 +123,19 @@ unsigned char ModelPart::getColourB() {
    /* This is a placeholder function that you will need to modify if you want to use it */
     
     /* As the name suggests ... */
-    return 0;   // needs updating
+    return colourB;   // needs updating
 }
 
 
 void ModelPart::setVisible(bool isVisible) {
     /* This is a placeholder function that you will need to modify if you want to use it */
-    
+    this->isVisible = isVisible;
     /* As the name suggests ... */
 }
 
 bool ModelPart::visible() {
     /* This is a placeholder function that you will need to modify if you want to use it */
-    
+    return isVisible;
     /* As the name suggests ... */
     return false;
 }

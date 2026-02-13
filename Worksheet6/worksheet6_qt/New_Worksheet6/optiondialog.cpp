@@ -53,13 +53,23 @@ int OptionDialog::getB() const { return ui->bSlider->value(); }
 bool OptionDialog::getIsVisible() const { return ui->isVisibleCheckBox->isChecked(); }
 
 void OptionDialog::updateFromPart(ModelPart* part) {
-    // Uses the widget names you defined in the UI Designer
-    ui->nameLineEdit->setText(part->data(0).toString());
-        ui->isVisibleCheckBox->setChecked(part->visible());
+    // 1. Set the Name and Visibility checkbox
+    ui->nameLineEdit->setText(part->data(0).toString()); // [cite: 367, 368]
+    ui->isVisibleCheckBox->setChecked(part->visible()); // [cite: 369]
+
+    // 2. Set sliders to the part's current RGB values using your names
+    ui->rSlider->setValue(part->getColourR());
+    ui->gSlider->setValue(part->getColourG());
+    ui->bSlider->setValue(part->getColourB());
 }
 
 void OptionDialog::updatePart(ModelPart* part) {
-    // Updates the ModelPart data based on the user's input in the dialog
-    part->set(0, ui->nameLineEdit->text());
-        part->setVisible(ui->isVisibleCheckBox->isChecked());
+    // 1. Save the Name and Visibility back to the part
+    part->set(0, ui->nameLineEdit->text()); // [cite: 373]
+    part->setVisible(ui->isVisibleCheckBox->isChecked()); // [cite: 369]
+
+    // 2. Save your slider values back to the part's internal storage
+    part->setColour(ui->rSlider->value(),
+                    ui->gSlider->value(),
+                    ui->bSlider->value());
 }

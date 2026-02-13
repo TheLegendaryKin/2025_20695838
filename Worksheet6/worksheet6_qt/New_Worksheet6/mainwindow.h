@@ -22,7 +22,8 @@ public slots:
     void handleTreeClicked();
     void on_actionOpen_File_triggered(); // Automatic connection [cite: 653]
     void on_actionItem_Options_triggered(); // For context menu [cite: 767]
-
+    void handleButton1();
+    void handleButton2();
     // Define signal to talk to the status bar [cite: 307]
 signals:
     void statusUpdateMessage(const QString & message, int timeout);

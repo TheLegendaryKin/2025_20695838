@@ -3,6 +3,7 @@
 #include <QMessageBox> // For Exercise 2 [cite: 290]
 #include <QFileDialog> // For Exercise 8 [cite: 708]
 #include "optiondialog.h"
+#include <QFileInfo> // Needed to extract filename from path
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -41,6 +42,9 @@ MainWindow::MainWindow(QWidget *parent)
 
     // 5. Add action to tree view for context menu [cite: 771]
     ui->treeView->addAction(ui->actionItem_Options);
+
+    connect(ui->pushButton, &QPushButton::released, this, &MainWindow::handleButton1);
+    connect(ui->pushButton_2, &QPushButton::released, this, &MainWindow::handleButton2);
 }
 
 // Example slot implementation [cite: 330, 334]
@@ -77,11 +81,19 @@ void MainWindow::on_actionOpen_File_triggered() {
         );
 
     if (!fileName.isEmpty()) {
-        // For now, just show the filename in the status bar [cite: 720]
-        emit statusUpdateMessage(QString("File selected: ") + fileName, 0);
+        // Get the selected item [cite: 490]
+        QModelIndex index = ui->treeView->currentIndex();
+        if (index.isValid()) {
+            ModelPart *selectedPart = static_cast<ModelPart*>(index.internalPointer()); // [cite: 491, 492]
 
-        // FUTURE STEP: We will later use the selected tree item
-        // and update its name property to reflect this filename[cite: 852].
+            // Extract just the filename (e.g., "part.stl") from the full path
+            QFileInfo fileInfo(fileName);
+            selectedPart->set(0, fileInfo.fileName());
+
+            // Refresh the tree display
+            emit partList->dataChanged(index, index);
+            emit statusUpdateMessage(QString("Updated item to: ") + fileInfo.fileName(), 0); // [cite: 854]
+        }
     }
 
     if (!fileName.isEmpty()) {
@@ -123,3 +135,5 @@ void MainWindow::on_actionItem_Options_triggered() {
     }
 }
 
+void MainWindow::handleButton1() { emit statusUpdateMessage("Button 1 Clicked!", 0); }
+void MainWindow::handleButton2() { emit statusUpdateMessage("Button 2 Clicked!", 0); }
